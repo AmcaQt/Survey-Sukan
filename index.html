@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Borang Penglibatan Sukan Pelajar Baharu | TVETMARA Petaling Jaya</title>
+<style>
+  :root {
+    --navy: #1B2447;
+    --blue: #4C6FE0;
+    --blue-soft: #E4EBFB;
+    --red: #B7373D;
+    --border: #E3E8F5;
+    --text-muted: #6B7280;
+    --card: #FFFFFF;
+    --radius: 16px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Arial, sans-serif;
+    color: var(--navy);
+    line-height: 1.5;
+    min-height: 100vh;
+    background:
+      radial-gradient(ellipse 900px 600px at 8% 0%, #E9F0FE 0%, transparent 55%),
+      radial-gradient(ellipse 900px 700px at 95% 15%, #DCE6FB 0%, transparent 55%),
+      radial-gradient(ellipse 800px 600px at 90% 90%, #E4ECFB 0%, transparent 55%),
+      linear-gradient(160deg, #F7FAFF 0%, #EEF3FD 45%, #F5F8FE 100%);
+    background-attachment: fixed;
+  }
+
+  header {
+    padding: 22px 20px 4px;
+  }
+
+  .header-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .header-badge { height: 36px; flex-shrink: 0; }
+  .header-badge img { height: 100%; display: block; }
+
+  .header-divider {
+    width: 1px;
+    height: 30px;
+    background: var(--border);
+  }
+
+  header h1 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--navy);
+  }
+
+  .badge-pill {
+    display: inline-block;
+    margin: 14px auto 0;
+    background: var(--blue-soft);
+    color: var(--blue);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    padding: 6px 16px;
+    border-radius: 999px;
+  }
+
+  .title-block {
+    max-width: 760px;
+    margin: 6px auto 0;
+    padding: 0 20px;
+    text-align: center;
+  }
+
+  .title-block h2 {
+    font-size: 28px;
+    margin: 6px 0 6px;
+    letter-spacing: -0.5px;
+    color: var(--navy);
+  }
+
+  .title-block p {
+    color: var(--text-muted);
+    font-size: 13.5px;
+    margin: 0;
+  }
+
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 26px 20px 60px;
+  }
+
+  .intro {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: 0 8px 30px rgba(27, 36, 71, 0.06);
+    padding: 18px 22px;
+    margin-bottom: 20px;
+    font-size: 13.5px;
+    color: var(--text-muted);
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  fieldset {
+    border: none;
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: 0 8px 30px rgba(27, 36, 71, 0.06);
+    padding: 24px 22px;
+    margin: 0;
+  }
+
+  legend {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 0 0 16px;
+  }
+
+  .field { margin-bottom: 18px; }
+  .field:last-child { margin-bottom: 0; }
+
+  label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 7px;
+    color: var(--navy);
+  }
+
+  .hint { font-weight: 400; color: var(--text-muted); font-size: 12.5px; }
+
+  input[type="text"],
+  input[type="number"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 11px 13px;
+    font-size: 14px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-family: inherit;
+    color: var(--navy);
+    background: #fff;
+  }
+
+  input:focus, select:focus, textarea:focus {
+    outline: 2px solid var(--blue);
+    outline-offset: 1px;
+    border-color: var(--blue);
+  }
+
+  .matrik-row {
+    display: flex;
+  }
+
+  .matrik-prefix {
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    background: var(--blue-soft);
+    color: var(--blue);
+    font-weight: 700;
+    font-size: 14px;
+    border: 1px solid var(--border);
+    border-right: none;
+    border-radius: 10px 0 0 10px;
+    letter-spacing: 0.5px;
+  }
+
+  .matrik-row input {
+    border-radius: 0 10px 10px 0;
+  }
+
+  .checkbox-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 16px;
+  }
+
+  .checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 9px 10px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+
+  .checkbox-item:has(input:checked) {
+    border-color: var(--blue);
+    background: var(--blue-soft);
+  }
+
+  .checkbox-item input { width: 16px; height: 16px; accent-color: var(--blue); }
+
+  .radio-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 8px;
+  }
+
+  .radio-item:has(input:checked) {
+    border-color: var(--blue);
+    background: var(--blue-soft);
+  }
+
+  .radio-item input { margin-top: 3px; accent-color: var(--blue); }
+
+  #other-sport-wrap, #achievement-repeat { display: none; margin-top: 10px; }
+
+  .achievement-row { display: flex; gap: 8px; margin-bottom: 8px; }
+  .achievement-row input { flex: 1; }
+
+  .btn-add {
+    background: none;
+    border: 1px dashed var(--blue);
+    color: var(--blue);
+    padding: 9px 13px;
+    border-radius: 10px;
+    font-size: 13px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+
+  .btn-remove {
+    background: none;
+    border: none;
+    color: var(--red);
+    cursor: pointer;
+    font-size: 13px;
+    padding: 0 6px;
+  }
+
+  button[type="submit"] {
+    width: 100%;
+    background: var(--navy);
+    color: #fff;
+    border: none;
+    padding: 14px 18px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(27, 36, 71, 0.18);
+  }
+
+  button[type="submit"]:hover { background: #10173352; background: #131A38; }
+
+  .required::after { content: " *"; color: var(--red); }
+
+  .success-box, .error-box {
+    display: none;
+    padding: 18px 22px;
+    border-radius: var(--radius);
+    font-size: 14px;
+    box-shadow: 0 8px 30px rgba(27, 36, 71, 0.06);
+  }
+
+  .success-box { background: #E9F7EE; border: 1px solid #BEE6C9; color: #1E7A38; }
+  .error-box { background: #FBE9EA; border: 1px solid #F0BABF; color: var(--red); }
+
+  footer {
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-muted);
+    padding: 20px;
+  }
+
+  @media (max-width: 480px) {
+    .checkbox-grid { grid-template-columns: 1fr; }
+    .title-block h2 { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="header-badge"><img src="logo.png" alt="TVETMARA Petaling Jaya"></div>
+    <div class="header-divider"></div>
+    <h1>Majlis Perwakilan Pelajar &middot; KKTM Petaling Jaya</h1>
+  </div>
+</header>
+
+<div class="title-block">
+  <span class="badge-pill">PELAJAR BAHARU</span>
+  <h2>Borang Penglibatan Sukan</h2>
+  <p>Tinjauan penglibatan sukan pelajar baharu KKTM Petaling Jaya</p>
+</div>
+
+<main>
+  <div class="intro">
+    Borang ini bertujuan mengumpul maklumat penglibatan sukan pelajar baharu bagi keperluan Majlis Perwakilan Pelajar (MPP) dan pihak pengurusan kolej. Sila lengkapkan dengan tepat. Semua maklumat yang ditandakan (<span style="color:var(--red)">*</span>) adalah wajib.
+  </div>
+
+  <!-- <form id="sukanForm" action="https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec" method="POST"> -->
+  <form id="sukanForm" action="https://script.google.com/macros/s/AKfycbwBdymcgY-Yo9iNOSqB4YdqkCMTLKJY-hu3ghTtKnvsE0s5JA27jU12C6P_NDfEDxVq/exec" method="POST">
+
+    <fieldset>
+      <legend>Maklumat Pelajar</legend>
+
+      <div class="field">
+        <label class="required" for="nama">Nama Penuh</label>
+        <input type="text" id="nama" name="Nama Penuh" required>
+      </div>
+
+      <div class="field">
+        <label class="required" for="matrik">No. Matrik</label>
+        <div class="matrik-row">
+          <span class="matrik-prefix">DFI</span>
+          <input type="text" id="matrik" inputmode="numeric" pattern="[0-9]*" placeholder="220123" required>
+        </div>
+        <input type="hidden" name="No Matrik" id="matrikFull">
+      </div>
+
+      <div class="field">
+        <label class="required" for="kelas">Kelas</label>
+        <input type="text" id="kelas" name="Kelas" placeholder="cth: A" required>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Penglibatan Sukan</legend>
+
+      <div id="sportSection">
+        <div class="field">
+          <label class="required">Sukan yang anda mainkan <span class="hint">(boleh pilih lebih dari satu)</span></label>
+          <div class="checkbox-grid">
+            <label class="checkbox-item"><input type="checkbox" name="Sukan" value="Bola Sepak"> Bola Sepak</label>
+            <label class="checkbox-item"><input type="checkbox" name="Sukan" value="Futsal"> Futsal</label>
+            <label class="checkbox-item"><input type="checkbox" name="Sukan" value="Badminton"> Badminton</label>
+            <label class="checkbox-item"><input type="checkbox" name="Sukan" value="Sepak Takraw"> Sepak Takraw</label>
+            <label class="checkbox-item"><input type="checkbox" name="Sukan" value="Bola Tampar"> Bola Tampar</label>
+            <label class="checkbox-item"><input type="checkbox" name="Sukan" value="Bola Jaring"> Bola Jaring</label>
+            <label class="checkbox-item"><input type="checkbox" name="Sukan" value="Ping Pong"> Ping Pong</label>
+            <label class="checkbox-item"><input type="checkbox" name="Sukan" value="Olahraga"> Olahraga</label>
+            <label class="checkbox-item"><input type="checkbox" name="Sukan" value="Renang"> Renang</label>
+            <label class="checkbox-item"><input type="checkbox" name="Sukan" value="E-Sukan"> E-Sukan</label>
+            <label class="checkbox-item"><input type="checkbox" name="Sukan" value="Lain-lain" onchange="toggleOtherSport(this)"> Lain-lain</label>
+          </div>
+          <div id="other-sport-wrap">
+            <input type="text" name="Sukan Lain" placeholder="Nyatakan sukan lain">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="required">Sampai tahap mana anda pernah bermain?</label>
+          <div class="radio-item">
+            <input type="radio" name="Tahap Penglibatan" value="Rekreasi/Kasual" id="tahap1">
+            <label for="tahap1" style="font-weight:400;margin:0;">Rekreasi / Kasual sahaja</label>
+          </div>
+          <div class="radio-item">
+            <input type="radio" name="Tahap Penglibatan" value="Peringkat Kolej" id="tahap2">
+            <label for="tahap2" style="font-weight:400;margin:0;">Peringkat Kolej (intramural / antara kelas)</label>
+          </div>
+          <div class="radio-item">
+            <input type="radio" name="Tahap Penglibatan" value="MSSD" id="tahap3">
+            <label for="tahap3" style="font-weight:400;margin:0;">MSSD (Majlis Sukan Sekolah Daerah)</label>
+          </div>
+          <div class="radio-item">
+            <input type="radio" name="Tahap Penglibatan" value="MSSM" id="tahap4">
+            <label for="tahap4" style="font-weight:400;margin:0;">MSSM (Majlis Sukan Sekolah Malaysia)</label>
+          </div>
+          <div class="radio-item">
+            <input type="radio" name="Tahap Penglibatan" value="Negeri" id="tahap5">
+            <label for="tahap5" style="font-weight:400;margin:0;">Peringkat Negeri</label>
+          </div>
+          <div class="radio-item">
+            <input type="radio" name="Tahap Penglibatan" value="Kebangsaan" id="tahap6">
+            <label for="tahap6" style="font-weight:400;margin:0;">Peringkat Kebangsaan</label>
+          </div>
+          <div class="radio-item">
+            <input type="radio" name="Tahap Penglibatan" value="Antarabangsa" id="tahap7">
+            <label for="tahap7" style="font-weight:400;margin:0;">Peringkat Antarabangsa</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Adakah anda mempunyai sebarang pencapaian/anugerah sukan?</label>
+          <div class="radio-item">
+            <input type="radio" name="Ada Pencapaian" value="Ya" id="pencapaian-ya" onchange="toggleAchievements()">
+            <label for="pencapaian-ya" style="font-weight:400;margin:0;">Ya</label>
+          </div>
+          <div class="radio-item">
+            <input type="radio" name="Ada Pencapaian" value="Tiada" id="pencapaian-tiada" onchange="toggleAchievements()">
+            <label for="pencapaian-tiada" style="font-weight:400;margin:0;">Tiada</label>
+          </div>
+
+          <div id="achievement-repeat">
+            <div id="achievementRows"></div>
+            <button type="button" class="btn-add" onclick="addAchievementRow()">+ Tambah Pencapaian</button>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Maklumat Tambahan</legend>
+      <div class="field">
+        <label for="catatan">Catatan Tambahan</label>
+        <textarea id="catatan" name="Catatan" rows="3" placeholder="Sebarang maklumat tambahan (pilihan)"></textarea>
+      </div>
+    </fieldset>
+
+    <button type="submit">Hantar Borang</button>
+  </form>
+
+  <div class="success-box" id="successBox">Terima kasih! Borang anda telah berjaya dihantar.</div>
+  <div class="error-box" id="errorBox">Maaf, terdapat masalah menghantar borang. Sila cuba lagi atau hubungi pihak MPP.</div>
+</main>
+
+<footer>Majlis Perwakilan Pelajar (MPP) &middot; KKTM Petaling Jaya &middot; Sesi Semasa</footer>
+
+<script>
+  function toggleOtherSport(el) {
+    document.getElementById('other-sport-wrap').style.display = el.checked ? 'block' : 'none';
+  }
+
+  function toggleAchievements() {
+    var yes = document.getElementById('pencapaian-ya').checked;
+    var wrap = document.getElementById('achievement-repeat');
+    wrap.style.display = yes ? 'block' : 'none';
+    if (yes && document.getElementById('achievementRows').children.length === 0) {
+      addAchievementRow();
+    }
+  }
+
+  function addAchievementRow() {
+    var row = document.createElement('div');
+    row.className = 'achievement-row';
+    row.innerHTML =
+      '<input type="text" name="Pencapaian[]" placeholder="cth: Naib Johan Badminton MSSD 2023">' +
+      '<button type="button" class="btn-remove" onclick="this.parentElement.remove()">Buang</button>';
+    document.getElementById('achievementRows').appendChild(row);
+  }
+
+  document.getElementById('matrik').addEventListener('input', function () {
+    this.value = this.value.replace(/[^0-9]/g, '');
+  });
+
+  document.getElementById('sukanForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var form = e.target;
+
+    document.getElementById('matrikFull').value = 'DFI' + document.getElementById('matrik').value;
+
+    var data = new FormData(form);
+    var successBox = document.getElementById('successBox');
+    var errorBox = document.getElementById('errorBox');
+
+    // Collapse into a plain object; repeated keys (checkboxes, achievement rows) become arrays
+    var payload = {};
+    data.forEach(function (value, key) {
+      if (payload.hasOwnProperty(key)) {
+        if (!Array.isArray(payload[key])) payload[key] = [payload[key]];
+        payload[key].push(value);
+      } else {
+        payload[key] = value;
+      }
+    });
+
+    // Sent as text/plain on purpose: Apps Script doesn't handle the OPTIONS
+    // preflight a normal application/json POST would trigger.
+    fetch(form.action, {
+      method: 'POST',
+      body: JSON.stringify(payload),
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' }
+    }).then(function (response) {
+      if (response.ok) {
+        form.style.display = 'none';
+        successBox.style.display = 'block';
+        errorBox.style.display = 'none';
+      } else {
+        errorBox.style.display = 'block';
+      }
+    }).catch(function () {
+      errorBox.style.display = 'block';
+    });
+  });
+</script>
+
+</body>
+</html>
