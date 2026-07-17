@@ -301,7 +301,7 @@
 
 <header>
   <div class="header-inner">
-    <div class="header-badge"><img src="tvetmara-pj.png" alt="TVETMARA Petaling Jaya"></div>
+    <div class="header-badge"><img src="logo.png" alt="TVETMARA Petaling Jaya"></div>
     <div class="header-divider"></div>
     <h1>Majlis Perwakilan Pelajar &middot; KKTM Petaling Jaya</h1>
   </div>
@@ -318,8 +318,7 @@
     Borang ini bertujuan mengumpul maklumat penglibatan sukan pelajar baharu bagi keperluan Majlis Perwakilan Pelajar (MPP) dan pihak pengurusan kolej. Sila lengkapkan dengan tepat. Semua maklumat yang ditandakan (<span style="color:var(--red)">*</span>) adalah wajib.
   </div>
 
-  <form id="sukanForm" action="https://script.google.com/macros/s/AKfycbztjuyBnxi5x4CG1VoA6-5Q7OPPyenTFb3E2DvSLf_tBJFC8H91qK5duvcVHEWs9531
-/exec" method="POST">
+  <form id="sukanForm" action="https://script.google.com/macros/s/AKfycbwAK9NkP173-IvZnCD6FaO8RPK7PRA2Fr9lY6PUMsuRTZy9tAebnWhtqparOPDWSv7J/exec" method="POST">
 
     <fieldset>
       <legend>Maklumat Pelajar</legend>
@@ -359,8 +358,8 @@
             <label class="checkbox-item"><input type="checkbox" name="Sukan" value="Bola Jaring"> Bola Jaring</label>
             <label class="checkbox-item"><input type="checkbox" name="Sukan" value="Ping Pong"> Ping Pong</label>
             <label class="checkbox-item"><input type="checkbox" name="Sukan" value="Olahraga"> Olahraga</label>
-            <label class="checkbox-item"><input type="checkbox" name="Sukan" value="Dart"> Dart</label>
             <label class="checkbox-item"><input type="checkbox" name="Sukan" value="Petanque"> Petanque</label>
+            <label class="checkbox-item"><input type="checkbox" name="Sukan" value="Dart"> Dart</label>
             <label class="checkbox-item"><input type="checkbox" name="Sukan" value="E-Sukan"> E-Sukan</label>
             <label class="checkbox-item"><input type="checkbox" name="Sukan" value="Lain-lain" onchange="toggleOtherSport(this)"> Lain-lain</label>
           </div>
@@ -485,20 +484,20 @@
       }
     });
 
-    // Sent as text/plain on purpose: Apps Script doesn't handle the OPTIONS
-    // preflight a normal application/json POST would trigger.
+    // Apps Script POST responses redirect through script.googleusercontent.com,
+    // and that redirect target doesn't carry CORS headers — so a normal 'cors'
+    // fetch gets blocked even when the script ran fine. no-cors sidesteps that;
+    // the tradeoff is we can no longer read the response, so we show success
+    // optimistically once the request itself doesn't throw.
     fetch(form.action, {
       method: 'POST',
       body: JSON.stringify(payload),
+      mode: 'no-cors',
       headers: { 'Content-Type': 'text/plain;charset=utf-8' }
-    }).then(function (response) {
-      if (response.ok) {
-        form.style.display = 'none';
-        successBox.style.display = 'block';
-        errorBox.style.display = 'none';
-      } else {
-        errorBox.style.display = 'block';
-      }
+    }).then(function () {
+      form.style.display = 'none';
+      successBox.style.display = 'block';
+      errorBox.style.display = 'none';
     }).catch(function () {
       errorBox.style.display = 'block';
     });
